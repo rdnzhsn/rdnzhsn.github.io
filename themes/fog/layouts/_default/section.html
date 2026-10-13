@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="section-page">
+
+    <header class="section-page__header">
+        <h1 class="section-page__title">{{ .Title }}</h1>
+        {{ with .Description }}
+        <p class="section-page__desc">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    {{ with .Params.nav }}
+    <nav class="card-grid">
+        {{ range . }}
+        <a class="card" href="{{ .url | relURL }}">
+            <h2 class="card__title">{{ .name }}</h2>
+            {{ with .description }}
+            <p class="card__desc">{{ . }}</p>
+            {{ end }}
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+
+</article>
+{{ end }}

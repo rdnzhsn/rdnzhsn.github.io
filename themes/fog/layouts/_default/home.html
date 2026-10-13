@@ -1,0 +1,24 @@
+{{ define "main" }}
+<header class="home-intro">
+    <h1 class="home-intro__title">Who is Rebecca?</h1>
+    <p class="home-intro__sub">Choose who you want to find out.</p>
+</header>
+
+<section class="home-split">
+    <a class="home-panel home-panel--career" href="{{ " /career/" | relURL }}">
+        <div class="home-panel__inner">
+            <span class="home-panel__eyebrow">Portfolio</span>
+            <h2 class="home-panel__title">Career</h2>
+            <p class="home-panel__desc">Senior DevOps, SRE and Data Engineer.</p>
+        </div>
+    </a>
+
+    <a class="home-panel home-panel--personal" href="{{ " /personal/" | relURL }}">
+        <div class="home-panel__inner">
+            <span class="home-panel__eyebrow">Journal</span>
+            <h2 class="home-panel__title">Personal</h2>
+            <p class="home-panel__desc">Somebody who loves natural philosophy.</p>
+        </div>
+    </a>
+</section>
+{{ end }}
