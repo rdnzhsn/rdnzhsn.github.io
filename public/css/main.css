@@ -1,22 +1,45 @@
-/* ---------- Design tokens ---------- */
+/* =========================================================
+   Design tokens
+   ========================================================= */
 :root {
-    --bg-fog: #ece9e3;
-    --bg-mist: #f5f3ef;
-    --ink: #2b2b28;
-    --ink-soft: #5c5a54;
-    --accent-sea: #7d8c8a;
-    --accent-amber: #b8895a;
-    --line: #d6d2c8;
+    /* Backgrounds — cool greys, low contrast between them */
+    --bg-fog: #dde0e1;
+    /* misty, cool, page base */
+    --bg-mist: #e6e8e8;
+    /* slightly lighter — career side */
+    --bg-fog-deep: #cfd3d4;
+    /* hover states */
 
+    /* Ink */
+    --ink: #2e3234;
+    /* soft charcoal, not black */
+    --ink-soft: #666c70;
+    /* muted slate */
+    --ink-faint: #8b9094;
+
+    /* Accents — barely there */
+    --accent-sea: #6f8484;
+    /* muted seafoam, cold */
+    --accent-amber: #8a7a63;
+    /* autumn leaf, desaturated to a taupe */
+
+    /* Lines */
+    --line: #c4c8c9;
+    --line-strong: #a9aeb0;
+
+    /* Typography */
     --font-serif: "Spectral", Georgia, serif;
     --font-sans: "Inter", system-ui, sans-serif;
 
+    /* Layout */
     --max-width: 1100px;
     --gutter: 1.5rem;
     --radius: 6px;
 }
 
-/* ---------- Reset-ish ---------- */
+/* =========================================================
+   Reset-ish
+   ========================================================= */
 *,
 *::before,
 *::after {
@@ -58,10 +81,16 @@ a:hover {
     text-decoration: underline;
 }
 
+/* =========================================================
+   Site chrome (header / main / footer)
+   ========================================================= */
 .site-header {
-    max-width: var(--max-width);
+    max-width: none;
     margin: 0 auto;
-    padding: var(--gutter);
+    padding: 1rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .site-title {
@@ -71,9 +100,10 @@ a:hover {
 }
 
 .site-main {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    /* panels handle their own padding */
 }
 
 .site-footer {
@@ -83,4 +113,128 @@ a:hover {
     color: var(--ink-soft);
     font-size: .85rem;
     border-top: 1px solid var(--line);
+}
+
+/* =========================================================
+   Homepage — intro band
+   ========================================================= */
+.home-intro {
+    text-align: center;
+    padding: 3rem 1.5rem 2.5rem;
+}
+
+.home-intro__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    margin: 0 0 .5rem;
+    color: var(--ink);
+}
+
+.home-intro__sub {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: .01em;
+}
+
+/* =========================================================
+   Homepage — split panels
+   ========================================================= */
+.home-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 14rem);
+    /* header + intro band */
+    border-top: 1px solid var(--line);
+}
+
+.home-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 4rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 400ms ease;
+}
+
+.home-panel:hover {
+    text-decoration: none;
+}
+
+.home-panel--career {
+    background: var(--bg-mist);
+}
+
+.home-panel--personal {
+    background: var(--bg-fog);
+}
+
+.home-panel--career:hover {
+    background: #dfe2e3;
+}
+
+.home-panel--personal:hover {
+    background: var(--bg-fog-deep);
+}
+
+.home-panel+.home-panel {
+    border-left: 1px solid var(--line);
+}
+
+.home-panel__inner {
+    max-width: 26rem;
+    text-align: left;
+}
+
+.home-panel__eyebrow {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-sea);
+    margin-bottom: 1rem;
+}
+
+.home-panel__title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+}
+
+.home-panel__desc {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+}
+
+.home-panel__cta {
+    font-size: .9rem;
+    color: var(--accent-amber);
+    letter-spacing: .02em;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 720px) {
+    .home-split {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .home-panel {
+        padding: 3rem 1.5rem;
+    }
+
+    .home-panel+.home-panel {
+        border-left: none;
+        border-top: 1px solid var(--line);
+    }
 }

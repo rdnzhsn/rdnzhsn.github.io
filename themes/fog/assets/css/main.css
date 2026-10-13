@@ -1,22 +1,43 @@
-/* ---------- Design tokens ---------- */
+/* =========================================================
+   Design tokens
+   ========================================================= */
 :root {
-    --bg-fog: #ece9e3;
-    --bg-mist: #f5f3ef;
-    --ink: #2b2b28;
-    --ink-soft: #5c5a54;
-    --accent-sea: #7d8c8a;
-    --accent-amber: #b8895a;
-    --line: #d6d2c8;
+    /* Backgrounds — cool greys with a whisper of blue */
+    --bg-page: #e4e7e8;
+    /* page base — cool fog */
+    --bg-panel-career: #cdd4d6;
+    /* career panel — wet-sand blue-grey */
+    --bg-panel-personal: #d6d3cc;
+    /* personal panel — warmer mist */
+    --bg-panel-career-hover: #c3cbcd;
+    --bg-panel-personal-hover: #ccc9c1;
 
+    /* Ink */
+    --ink: #2e3234;
+    --ink-soft: #666c70;
+    --ink-faint: #8b9094;
+
+    /* Accents — barely there */
+    --accent-sea: #5f7a7d;
+    /* deeper seafoam, still cold */
+    --accent-amber: #8a7a63;
+    /* taupe, autumn leaf in fog */
+
+    /* Lines */
+    --line: #c4c8c9;
+
+    /* Typography */
     --font-serif: "Spectral", Georgia, serif;
     --font-sans: "Inter", system-ui, sans-serif;
 
+    /* Layout */
     --max-width: 1100px;
     --gutter: 1.5rem;
-    --radius: 6px;
 }
 
-/* ---------- Reset-ish ---------- */
+/* =========================================================
+   Reset-ish
+   ========================================================= */
 *,
 *::before,
 *::after {
@@ -30,7 +51,7 @@ body {
 }
 
 body {
-    background: var(--bg-fog);
+    background: var(--bg-page);
     color: var(--ink);
     font-family: var(--font-sans);
     font-weight: 300;
@@ -58,10 +79,16 @@ a:hover {
     text-decoration: underline;
 }
 
+/* =========================================================
+   Site chrome (header / main / footer)
+   ========================================================= */
 .site-header {
-    max-width: var(--max-width);
+    max-width: none;
     margin: 0 auto;
-    padding: var(--gutter);
+    padding: 1rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .site-title {
@@ -71,9 +98,9 @@ a:hover {
 }
 
 .site-main {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 .site-footer {
@@ -85,13 +112,36 @@ a:hover {
     border-top: 1px solid var(--line);
 }
 
-/* ---------- Homepage split ---------- */
+/* =========================================================
+   Homepage — intro band
+   ========================================================= */
+.home-intro {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+}
+
+.home-intro__title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 600;
+    margin: 0 0 .35rem;
+    color: var(--ink);
+}
+
+.home-intro__sub {
+    color: var(--ink-soft);
+    font-size: .95rem;
+    margin: 0;
+}
+
+/* =========================================================
+   Homepage — split panels
+   ========================================================= */
 .home-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: calc(100vh - 4rem);
-    /* fill the viewport under the header */
-    border-top: 1px solid var(--line);
+    min-height: calc(100vh - 13rem);
+    /* header + intro band */
 }
 
 .home-panel {
@@ -99,7 +149,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4rem 3rem;
+    padding: 5rem 4rem;
     color: var(--ink);
     text-decoration: none;
     transition: background 400ms ease;
@@ -110,19 +160,19 @@ a:hover {
 }
 
 .home-panel--career {
-    background: var(--bg-mist);
+    background: var(--bg-panel-career);
 }
 
 .home-panel--personal {
-    background: var(--bg-fog);
+    background: var(--bg-panel-personal);
 }
 
 .home-panel--career:hover {
-    background: #e9e6df;
+    background: var(--bg-panel-career-hover);
 }
 
 .home-panel--personal:hover {
-    background: #e5e1d9;
+    background: var(--bg-panel-personal-hover);
 }
 
 .home-panel+.home-panel {
@@ -130,54 +180,49 @@ a:hover {
 }
 
 .home-panel__inner {
-    max-width: 22rem;
-    text-align: left;
+    max-width: 20rem;
 }
 
 .home-panel__eyebrow {
     display: block;
     font-family: var(--font-sans);
-    font-size: .75rem;
+    font-size: .7rem;
     font-weight: 500;
-    letter-spacing: .18em;
+    letter-spacing: .22em;
     text-transform: uppercase;
     color: var(--accent-sea);
-    margin-bottom: 1rem;
+    margin-bottom: .75rem;
 }
 
 .home-panel__title {
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 600;
+    line-height: 1.05;
     margin: 0 0 .75rem;
-    color: var(--ink);
 }
 
 .home-panel__desc {
     color: var(--ink-soft);
-    font-size: 1rem;
-    margin: 0 0 1.5rem;
+    font-size: .95rem;
+    margin: 0;
 }
 
-.home-panel__cta {
-    font-size: .9rem;
-    color: var(--accent-amber);
-    letter-spacing: .02em;
-}
-
-/* ---------- Responsive: stack on small screens ---------- */
+/* =========================================================
+   Responsive
+   ========================================================= */
 @media (max-width: 720px) {
     .home-split {
         grid-template-columns: 1fr;
         min-height: auto;
     }
 
+    .home-panel {
+        padding: 3rem 1.5rem;
+    }
+
     .home-panel+.home-panel {
         border-left: none;
         border-top: 1px solid var(--line);
-    }
-
-    .home-panel {
-        padding: 3rem 1.5rem;
     }
 }
