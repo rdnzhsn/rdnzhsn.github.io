@@ -1,6 +1,27 @@
 {{ define "main" }}
-<section class="home">
-    <h1>{{ site.Title }}</h1>
-    <p>Fog rolling in. Content coming shortly.</p>
+<section class="home-split">
+
+    <a class="home-panel home-panel--career" href="{{ " /career/" | relURL }}">
+        <div class="home-panel__inner">
+            <span class="home-panel__eyebrow">Portfolio</span>
+            <h1 class="home-panel__title">Career</h1>
+            <p class="home-panel__desc">
+                Projects, timeline, skills, and a CV.
+            </p>
+            <span class="home-panel__cta">Enter →</span>
+        </div>
+    </a>
+
+    <a class="home-panel home-panel--personal" href="{{ " /personal/" | relURL }}">
+        <div class="home-panel__inner">
+            <span class="home-panel__eyebrow">Journal</span>
+            <h1 class="home-panel__title">Personal</h1>
+            <p class="home-panel__desc">
+                Physics notes, schedule, tidal playlist, and writing.
+            </p>
+            <span class="home-panel__cta">Enter →</span>
+        </div>
+    </a>
+
 </section>
 {{ end }}
