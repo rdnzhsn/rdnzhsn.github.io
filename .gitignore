@@ -1,0 +1,18 @@
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Node (only if you ever add it — harmless to keep)
+node_modules/
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Env / secrets
+.env

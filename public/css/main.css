@@ -1,0 +1,86 @@
+/* ---------- Design tokens ---------- */
+:root {
+    --bg-fog: #ece9e3;
+    --bg-mist: #f5f3ef;
+    --ink: #2b2b28;
+    --ink-soft: #5c5a54;
+    --accent-sea: #7d8c8a;
+    --accent-amber: #b8895a;
+    --line: #d6d2c8;
+
+    --font-serif: "Spectral", Georgia, serif;
+    --font-sans: "Inter", system-ui, sans-serif;
+
+    --max-width: 1100px;
+    --gutter: 1.5rem;
+    --radius: 6px;
+}
+
+/* ---------- Reset-ish ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-fog);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin: 0 0 .5em;
+}
+
+a {
+    color: var(--accent-amber);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.site-header {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--gutter);
+}
+
+.site-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 4rem auto 2rem;
+    padding: var(--gutter);
+    color: var(--ink-soft);
+    font-size: .85rem;
+    border-top: 1px solid var(--line);
+}

@@ -1,0 +1,6 @@
+baseURL = 'https://rdnzhsn.github.io/'
+languageCode = 'en-gb'
+title = 'Rebecca'
+theme = 'fog'
+
+disableKinds = ["taxonomy", "term"]
